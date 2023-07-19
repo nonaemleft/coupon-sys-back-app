@@ -1,14 +1,14 @@
 package com.chen.couponys.controllers;
 
-import com.jb.coupoun_2_spring.bins.Category;
-import com.jb.coupoun_2_spring.bins.Company;
-import com.jb.coupoun_2_spring.bins.Coupon;
-import com.jb.coupoun_2_spring.bins.User;
-import com.jb.coupoun_2_spring.exceptions.CoupounSystemException;
-import com.jb.coupoun_2_spring.exceptions.ErrMsg;
-import com.jb.coupoun_2_spring.login.ClientsType;
-import com.jb.coupoun_2_spring.security.TokenService;
-import com.jb.coupoun_2_spring.services.CompanyService;
+import com.chen.couponys.bins.Category;
+import com.chen.couponys.bins.Company;
+import com.chen.couponys.bins.Coupon;
+import com.chen.couponys.bins.User;
+import com.chen.couponys.exceptions.CoupounSystemException;
+import com.chen.couponys.exceptions.ErrMsg;
+import com.chen.couponys.login.ClientsType;
+import com.chen.couponys.security.TokenService;
+import com.chen.couponys.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
