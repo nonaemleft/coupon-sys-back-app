@@ -1,6 +1,6 @@
 package com.chen.couponys.bins;
 
-import com.jb.coupoun_2_spring.login.ClientsType;
+import com.chen.couponys.login.ClientsType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

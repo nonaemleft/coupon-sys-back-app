@@ -1,11 +1,11 @@
 package com.chen.couponys.clr;
 
-import com.jb.coupoun_2_spring.bins.*;
-import com.jb.coupoun_2_spring.login.ClientsType;
-import com.jb.coupoun_2_spring.repos.CompanyRepository;
-import com.jb.coupoun_2_spring.repos.CouponRepository;
-import com.jb.coupoun_2_spring.repos.CustomerRepository;
-import com.jb.coupoun_2_spring.repos.UserRepository;
+import com.chen.couponys.bins.*;
+import com.chen.couponys.login.ClientsType;
+import com.chen.couponys.repos.CompanyRepository;
+import com.chen.couponys.repos.CouponRepository;
+import com.chen.couponys.repos.CustomerRepository;
+import com.chen.couponys.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

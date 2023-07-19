@@ -1,7 +1,6 @@
 package com.chen.couponys.advice;
 
-
-import com.jb.coupoun_2_spring.exceptions.CoupounSystemException;
+import com.chen.couponys.exceptions.CoupounSystemException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
