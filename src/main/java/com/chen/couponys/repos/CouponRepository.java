@@ -11,16 +11,16 @@ import java.util.List;
 public interface CouponRepository extends JpaRepository<Coupon, Integer> {
 
 
-    List<Coupon> findByCompany(int id);
+    List<Coupon> findByCompanyId(int id);
 
     List<Coupon> findByEndDateAfter(Date date);
 
-    List<Coupon> findByCompanyAndPriceLessThan(int id, double maxPrice);
+    List<Coupon> findByCompanyIdAndPriceLessThan(int id, double maxPrice);
     List<Coupon> findByTitle(String title);
 
-    List<Coupon> findByCompanyAndTitle(int id, String title);
+    List<Coupon> findByCompanyIdAndTitle(int id, String title);
 
-    List<Coupon> findByCompanyAndCategory(int id, Category category);
+    List<Coupon> findByCompanyIdAndCategory(int id, Category category);
 
     @Query(value = "INSERT INTO `inspringwetrust`.`customers_coupon_list` (`customer_id`, `coupon_list_id`) VALUES (?, ?);",nativeQuery = true)
     void purchaseCoupon(int id, int couponId) throws Exception;

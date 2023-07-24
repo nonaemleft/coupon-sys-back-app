@@ -50,17 +50,17 @@ public class CompanyServiceImpl extends ClientService implements CompanyService 
     @Override
     public List<Coupon> getCompanyCoupons(int id) {
 
-        return couponRepository.findByCompany(id);
+        return couponRepository.findByCompanyId(id);
     }
 
     @Override
     public List<Coupon> getCompanyCoupons(double maxPrice, int id) {
-        return couponRepository.findByCompanyAndPriceLessThan(id, maxPrice);
+        return couponRepository.findByCompanyIdAndPriceLessThan(id, maxPrice);
     }
 
     @Override
     public List<Coupon> getCompanyCoupons(Category category, int id) {
-        return couponRepository.findByCompanyAndCategory(id, category);
+        return couponRepository.findByCompanyIdAndCategory(id, category);
     }
 
     @Override

@@ -18,13 +18,13 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @PostMapping("register")
+    @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public void register(@RequestBody User user) throws CoupounSystemException {
         authService.register(user);
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     @ResponseStatus(HttpStatus.CREATED)
     public UUID login(@RequestBody User user) throws CoupounSystemException {
         return authService.login(user);

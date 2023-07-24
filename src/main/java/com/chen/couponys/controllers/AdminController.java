@@ -44,7 +44,7 @@ public class AdminController {
 
     }
 
-    @DeleteMapping("/companies/del/{id}")
+    @DeleteMapping("/companies/{id}")
     public void deleteCompany( @RequestHeader UUID token, @PathVariable int id) throws Exception {
         if (!tokenService.isUserAllowed(token, ClientsType.ADMINISTRATOR)){
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
@@ -61,7 +61,7 @@ public class AdminController {
         return adminService.getSingleCompany(id);
     }
 
-    @PostMapping("/companies/update/{id}")
+    @PutMapping("/companies/{id}")
     public void updateCompany(@RequestHeader UUID token, @PathVariable int id, @RequestBody Company company) throws Exception {
         if (!tokenService.isUserAllowed(token, ClientsType.ADMINISTRATOR)){
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
@@ -87,7 +87,7 @@ public class AdminController {
 
     }
 
-    @DeleteMapping("/customer/del/{id}")
+    @DeleteMapping("/customer/{id}")
     public void deleteCustomer(@RequestHeader UUID token, @PathVariable int id) throws Exception {
         if (!tokenService.isUserAllowed(token, ClientsType.ADMINISTRATOR)){
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
@@ -104,7 +104,7 @@ public class AdminController {
         return adminService.getSingleCustomer(id);
     }
 
-    @PostMapping("/customer/update/{id}")
+    @PutMapping("/customer/{id}")
     public void updateCustomer(@RequestHeader UUID token, @PathVariable int id, @RequestBody Customer customer) throws Exception {
         if (!tokenService.isUserAllowed(token, ClientsType.ADMINISTRATOR)){
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);

@@ -71,7 +71,7 @@ public class CompanyController {
 
     }
 
-    @PostMapping("/coupons/update/{id}")
+    @PutMapping("/coupons/{id}")
     public void updateCoupon(@RequestHeader UUID token, @PathVariable int id, @RequestBody Coupon coupon) throws Exception {
         if (!tokenService.isUserAllowed(token, ClientsType.COMPANY)) {
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
@@ -79,7 +79,7 @@ public class CompanyController {
         companyService.updateCoupon(id, coupon);
     }
 
-    @DeleteMapping("/coupons/del/{id}")
+    @DeleteMapping("/coupons/{id}")
     public void deleteCoupon(@RequestHeader UUID token, @PathVariable int id) throws CoupounSystemException {
         if (!tokenService.isUserAllowed(token, ClientsType.COMPANY)) {
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);

@@ -24,7 +24,7 @@ public class DatabaseManager implements CommandLineRunner {
     @Autowired
     private CouponRepository couponRepository;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
     public void run(String... args) throws Exception {
