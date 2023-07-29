@@ -11,7 +11,6 @@ import com.chen.couponys.security.TokenService;
 import com.chen.couponys.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -60,11 +59,13 @@ public class CustomerController {
         User user = tokenService.userFromToken(token);
         return customerService.getCustomerDetails(user.getId());
     }
-    //todo
-    private void purchaseCoupon(@RequestHeader UUID token) throws CoupounSystemException {
+   @PutMapping("/purchase")
+    private void purchaseCoupon(@RequestHeader UUID token, @RequestParam int couponId) throws Exception {
         if (!tokenService.isUserAllowed(token, ClientsType.CUSTOMER)){
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
         }
+       User user = tokenService.userFromToken(token);
+       customerService.purchaseCoupon(user.getId(),couponId);
 
     }
 }

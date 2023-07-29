@@ -7,8 +7,6 @@ import com.chen.couponys.exceptions.ErrMsg;
 import com.chen.couponys.login.ClientsType;
 import com.chen.couponys.security.TokenService;
 import com.chen.couponys.services.AdminService;
-import com.chen.couponys.services.CompanyService;
-import com.chen.couponys.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +17,8 @@ import java.util.UUID;
 @RequestMapping("api/admin")
 public class AdminController {
     @Autowired
-    private CompanyService companyService;
-    @Autowired
     private AdminService adminService;
-    @Autowired
-    private CustomerService customerService;
+
     @Autowired
     TokenService tokenService;
 

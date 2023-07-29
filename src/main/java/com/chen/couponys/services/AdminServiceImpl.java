@@ -44,7 +44,7 @@ public class AdminServiceImpl extends ClientService implements AdminService {
 
     @Override
     public void deleteCompany(int id) throws Exception {
-        if (companyRepository.existsById(id)){
+        if (!companyRepository.existsById(id)){
             throw new CoupounSystemException(ErrMsg.ID_NOT_FOUND);
         }
         companyRepository.deleteById(id);
@@ -82,7 +82,7 @@ public class AdminServiceImpl extends ClientService implements AdminService {
 
     @Override
     public void deleteCustomer(int id) throws Exception {
-        if (customerRepository.existsById(id)){
+        if (!customerRepository.existsById(id)){
             throw new CoupounSystemException(ErrMsg.ID_NOT_FOUND);
         }
         customerRepository.deleteById(id);

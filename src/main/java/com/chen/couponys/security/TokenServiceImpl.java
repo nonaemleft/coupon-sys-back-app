@@ -5,7 +5,6 @@ import com.chen.couponys.login.ClientsType;
 import com.chen.couponys.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,11 +46,11 @@ public class TokenServiceImpl implements TokenService{
         return  userService.getById(info.getId());
 
     }
-    //todo
 
     @Override
     public void clear() {
-        this.tokenMap.entrySet().removeIf(item-> item.getValue().getTime().isAfter(LocalDateTime.now().minusMinutes(30)));
+        this.tokenMap.entrySet().removeIf(item-> item.getValue()
+                .getTime().isBefore(LocalDateTime.now().minusMinutes(30)));
 
 
     }

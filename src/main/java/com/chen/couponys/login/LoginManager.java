@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Component
@@ -41,7 +40,6 @@ public class LoginManager {
 
             break;
             case COMPANY: {
-                //Todo: torn to compamy servis
                 CompanyServiceImpl companyService = new CompanyServiceImpl();
                 List<Company> companyList = companyRepository.findByEmail(email);
                 if (companyList.size() == 0) {
