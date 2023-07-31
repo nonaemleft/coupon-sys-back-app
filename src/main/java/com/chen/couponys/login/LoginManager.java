@@ -6,6 +6,7 @@ import com.chen.couponys.bins.User;
 import com.chen.couponys.exceptions.CoupounSystemException;
 import com.chen.couponys.exceptions.ErrMsg;
 import com.chen.couponys.repos.CompanyRepository;
+import com.chen.couponys.repos.CustomerRepository;
 import com.chen.couponys.repos.UserRepository;
 import com.chen.couponys.security.TokenService;
 import com.chen.couponys.services.*;
@@ -19,18 +20,20 @@ import java.util.UUID;
 public class LoginManager {
 
     @Autowired
-    static CompanyRepository companyRepository;
+    private CompanyRepository companyRepository;
     @Autowired
-    static TokenService tokenService;
+    private TokenService tokenService;
     @Autowired
-    static UserRepository userRepository;
+    private UserRepository userRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
 
 
-    public static UUID login(String email, String password, ClientsType clientsType) throws Exception {
+    public  UUID login(String email, String password, ClientsType clientsType) throws Exception {
         switch (clientsType) {
             case ADMINISTRATOR: {
                 AdminService adminService = new AdminServiceImpl();
-                if (( adminService).login(email, password)) {
+                if ((adminService).login(email, password)) {
                     User user = userRepository.findByEmail(email).get(0);
                     System.out.println(user);
 
@@ -40,7 +43,6 @@ public class LoginManager {
 
             break;
             case COMPANY: {
-                CompanyServiceImpl companyService = new CompanyServiceImpl();
                 List<Company> companyList = companyRepository.findByEmail(email);
                 if (companyList.size() == 0) {
                     throw new CoupounSystemException(ErrMsg.EMAIL_NOT_FOUND);
@@ -54,15 +56,18 @@ public class LoginManager {
             }
             break;
             case CUSTOMER: {
-                AdminService adminService = new AdminServiceImpl();
-               Customer customer= adminService.getCustomerByEmail(email);
-                if (customer.getId() == 0) {
+                List<Customer> customerList = customerRepository.findByEmail(email);
+                System.out.println(customerList);
+                if (customerList.size()==0){
                     throw new CoupounSystemException(ErrMsg.EMAIL_NOT_FOUND);
                 }
-
+                Customer customer = customerList.get(0);
                 if (customer.getPassword().equals(password)) {
-                    User user = userRepository.findByEmail(email).get(0);
-
+                    List<User> userList = userRepository.findByEmail(email);
+                    System.out.println("1234");
+                    System.out.println(userList);
+                    User user = userList.get(0);
+                    System.out.println(user);
                     return tokenService.addToken(user);
 
                 }

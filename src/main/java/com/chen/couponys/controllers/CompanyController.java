@@ -7,6 +7,7 @@ import com.chen.couponys.bins.User;
 import com.chen.couponys.exceptions.CoupounSystemException;
 import com.chen.couponys.exceptions.ErrMsg;
 import com.chen.couponys.login.ClientsType;
+import com.chen.couponys.repos.CompanyRepository;
 import com.chen.couponys.security.TokenService;
 import com.chen.couponys.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
     @Autowired
+    CompanyRepository companyRepository;
+    @Autowired
     private TokenService tokenService;
 
     @GetMapping
@@ -30,7 +33,8 @@ public class CompanyController {
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
         }
         User user = tokenService.userFromToken(token);
-        return companyService.getCompanyDetails(user.getId());
+        int comId= companyRepository.findByEmail(user.getEmail()).get(0).getId();
+        return companyService.getCompanyDetails(comId);
     }
 
     @GetMapping("/coupons")
@@ -39,7 +43,8 @@ public class CompanyController {
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
         }
         User user = tokenService.userFromToken(token);
-        return companyService.getCompanyCoupons(user.getId());
+        int comId= companyRepository.findByEmail(user.getEmail()).get(0).getId();
+        return companyService.getCompanyCoupons(comId);
     }
 
 
@@ -49,7 +54,8 @@ public class CompanyController {
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
         }
         User user = tokenService.userFromToken(token);
-        return companyService.getCompanyCoupons(max,user.getId());
+        int comId= companyRepository.findByEmail(user.getEmail()).get(0).getId();
+        return companyService.getCompanyCoupons(max,comId);
     }
 
 
@@ -59,7 +65,8 @@ public class CompanyController {
             throw new CoupounSystemException(ErrMsg.INVALID_ACTION);
         }
         User user = tokenService.userFromToken(token);
-        return companyService.getCompanyCoupons(category,user.getId());
+        int comId= companyRepository.findByEmail(user.getEmail()).get(0).getId();
+        return companyService.getCompanyCoupons(category,comId);
     }
 
     @PostMapping("/coupons/add")

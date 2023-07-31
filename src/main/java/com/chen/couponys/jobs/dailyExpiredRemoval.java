@@ -10,7 +10,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-@Component
+//@Component
 public class dailyExpiredRemoval {
     @Autowired
     private CouponRepository couponRepository;

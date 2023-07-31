@@ -33,7 +33,6 @@ public class TokenServiceImpl implements TokenService{
     public boolean isUserAllowed(UUID token, ClientsType type) {
         Information info =tokenMap.get(token);
         System.out.println(info);
-        System.out.println(type);
         ClientsType clientsType =info.getClientTyp();
         System.out.println(clientsType);
 
@@ -43,7 +42,10 @@ public class TokenServiceImpl implements TokenService{
     @Override
     public User userFromToken(UUID token) {
         Information info = tokenMap.get(token);
-        return  userService.getById(info.getId());
+        System.out.println(info);
+        User user = userService.getById(info.getId());
+        System.out.println(user);
+        return  user;
 
     }
 

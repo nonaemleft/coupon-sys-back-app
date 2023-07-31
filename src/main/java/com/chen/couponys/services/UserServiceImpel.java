@@ -26,6 +26,6 @@ public class UserServiceImpel implements UserService{
 
     @Override
     public User getById(int id) {
-        return userRepository.findById(id).get(0);
+        return userRepository.findById(id).orElseThrow();
     }
 }
